@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Happy Birthday! 🎉</title>
+    <script src="java.js"></script>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive;
+            background: #554e6e;
+            text-align: center;
+            margin: 0;
+            padding: 20px 0;
+        }
+    
+        .slider-container {
+            width: 90%;
+            max-width: 600px;
+            margin: 20px auto;
+            overflow: hidden;
+            position: relative;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 15px;
+        }
+    
+        .slider {
+            display: flex;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+    
+        .slide {
+            min-width: 100%;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            scroll-snap-align: start;
+        }
+    
+        .slide img {
+            width: 85%;
+            height: 85%;
+            object-fit: cover;
+            border: 5px solid #fff;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+    
+        .dots {
+            text-align: center;
+            margin: 20px 0;
+            position: relative;
+            z-index: 2;
+        }
+    
+        .dot {
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 50%;
+            margin: 0 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+    
+        .dot.active {
+            background: #ff4081;
+            transform: scale(1.3);
+            border-color: #fff;
+        }
+    
+        .swipe-hint {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.8);
+            font-style: italic;
+            margin: 15px 0;
+            font-size: 1.1em;
+        }
+    
+        h1 {
+            color: #ff4081;
+            font-size: 3.5em;
+            text-shadow: 3px 3px rgba(0,0,0,0.2);
+            animation: bounce 1.5s infinite;
+            margin: 20px 0;
+        }
+    
+        .photo-frame {
+            border: 15px solid #fff;
+            border-radius: 20px;
+            margin: 20px auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            max-width: 80%;
+        }
+    
+        .photo-frame:hover {
+            transform: rotate(-3deg) scale(1.05);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+        }
+    
+        .message {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 25px;
+            border-radius: 20px;
+            margin: 25px auto;
+            font-size: 1.2em;
+            line-height: 1.7;
+            max-width: 80%;
+            backdrop-filter: blur(5px);
+        }
+    
+        button {
+            background: linear-gradient(135deg, #ff4081, #e91e63);
+            color: white;
+            border: none;
+            padding: 18px 35px;
+            font-size: 1.3em;
+            border-radius: 30px;
+            cursor: pointer;
+            margin: 25px 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(233, 30, 99, 0.4);
+        }
+    
+        button:hover {
+            transform: scale(1.08);
+            box-shadow: 0 8px 20px rgba(233, 30, 99, 0.6);
+        }
+    
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+    
+        .confetti {
+            position: fixed;
+            width: 12px;
+            height: 12px;
+            background: #ff4081;
+            pointer-events: none;
+            z-index: 9999;
+        }
+        .arrow-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.8);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+    font-size: 24px;
+    color: #ff4081;
+}
+
+.left-arrow {
+    left: 15px;
+}
+
+.right-arrow {
+    right: 15px;
+}
+
+.arrow-btn:hover {
+    background: white;
+    transform: translateY(-50%) scale(1.1);
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Happy Birthday, chercha9! 🎂</h1>
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/0elmUoU7eMPwZX1Mw1MnQo?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        
+        <div class="slider-container">
+             <button onclick="resetAutoSlide()"> pause</button>
+             <button onclick="resetAutoSlide()">play</button>
+            <div class="slider" id="slider">
+                
+                <div class="slide">
+                    <img src="pic1.png" alt="Memory 1">
+                </div>
+                <div class="slide">
+                    <img src="pic2.png" alt="Memory 2">
+                </div>
+                <div class="slide">
+                    <img src="pic3.png" alt="Memory 3">
+                </div>
+            </div>
+            <div class="dots" id="dots"></div>
+            <p class="swipe-hint">Swipe left/right to see more memories! ← →</p>
+        </div>
+        
+        
+        <div class="message">
+            <p>🎈 To the most amazing friend in the world! 🎈</p>
+            <p>On your special day, I want you to know...</p>
+            <p>You make every day brighter just by being you. Thanks for being my partner in Bully ppl , my midnight snack buddy my choclate, and the one who laughs at my terrible jokes. Here's to another year of adventures, inside memes, and unforgettable moments. Love you to the moon and back! 💖</p>
+    <p>– ur chercha9</p>
+            <p>Wishing you endless joy and laughter! 🥳</p>
+        </div>
+
+        <button onclick="window.location.href='sur.html'">Click for Surprise! 🎊</button>
+    </div>
+
+    <script>
+        
+function throwConfetti() {
+    for (let i = 0; i < 100; i++) {
+        createConfettiPiece();
+    }
+}
+
+function createConfettiPiece() {
+    const confetti = document.createElement('div');
+    confetti.classList.add('confetti');
+    
+    confetti.style.left = Math.random() * 100 + "%";
+    confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+    
+    confetti.style.animation = 
+        `confettiFall ${Math.random() * 3 + 2}s linear`;
+    
+    document.body.appendChild(confetti);
+    
+    setTimeout(() => confetti.remove(), 5000);
+}
+
+function throwConfettiAndRedirect() {
+    throwConfetti();
+    setTimeout(() => {
+        window.location.href = "sur.html"; 
+    }, 3000); 
+}
+
+
+const slider = document.getElementById('slider');
+const dotsContainer = document.getElementById('dots');
+let currentIndex = 0;
+let autoSlideInterval;
+
+const slides = document.querySelectorAll('.slide');
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes confettiFall {
+        0% { transform: translateY(-100vh) rotate(0deg); }
+        100% { transform: translateY(100vh) rotate(360deg); }
+    }
+`;
+document.head.appendChild(style);
+
+
+slides.forEach((_, index) => {
+    const dot = document.createElement('div');
+    dot.classList.add('dot');
+    if(index === 0) dot.classList.add('active');
+    dot.addEventListener('click', () => {
+        currentIndex = index;
+        updateSlider();
+        resetAutoSlide();
+    });
+    dotsContainer.appendChild(dot);
+});
+
+
+function startAutoSlide() {
+    autoSlideInterval = setInterval(() => {
+        currentIndex = (currentIndex + 1) % slides.length;
+        updateSlider();
+    }, 5000); 
+}
+
+function resetAutoSlide() {
+    clearInterval(autoSlideInterval);
+    startAutoSlide();
+}
+
+function updateSlider() {
+    slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+    document.querySelectorAll('.dot').forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentIndex);
+    });
+}
+
+
+slider.addEventListener('mouseenter', () => clearInterval(autoSlideInterval));
+slider.addEventListener('mouseleave', () => startAutoSlide());
+    </script>
+</body>
+</html>
